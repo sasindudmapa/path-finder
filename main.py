@@ -42,4 +42,4 @@ def neighboursCostCal(curNode):
             #calculate the cost for the current neighbour
             cost = costOfNode(neighbour[0], goalCords, neighbour[1], gradient, intercept)
             for sortedNode in sortedNodesList:
-                print()
+                

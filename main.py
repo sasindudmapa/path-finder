@@ -6,7 +6,7 @@ visitedNodeList = []
 unvisitedSortedNodesList = [[None, float("inf"), None]] #none->node number, float->cost, none->prev node
 calculatedNodesList = []
 goalCords = map_nodes[4][1] #test 
-startX, startY = 3, 23 #test
+startCords = [4,2000] #test
 gradient = 5
 intercept = 8
 currentNode = 1
@@ -76,7 +76,20 @@ def handleNextNodeVisit():
     #remove current node from the sorted node list
     unvisitedSortedNodesList.pop(0)
 
+#find the gradient and the intercept between the line of start node to goal node
+def createStartToGoalLine():
+    startX, startY = startCords
+    goalX, goalY = goalCords
 
+    print(startX, startY, goalX, goalY)
+
+    gradient = (goalY - startY)/(goalX - startX)
+
+    intercept = startY - (gradient * startX)
+
+    print(gradient, intercept)
+
+createStartToGoalLine()
 
 
 

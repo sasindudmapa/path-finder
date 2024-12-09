@@ -98,19 +98,21 @@ def pathFinder(start, goal, map_nodes):
         print(f"current node is {currentNode[0]} and goal is {goal} before handler")
 
         # handleNextNodeVisit() if currentNode[0] != goal else None
-        handleNextNodeVisit() if not foundGoal[0] else None
-        # if not foundGoal[0]:
-        #     handleNextNodeVisit()
-        # else:
-        #     print(visitedNodeList)
-        #     print("goal minus one is ", goal - 2)
-        #     visitedNodeList[goal - 2] = [goal, currentNode[0]]
+        # handleNextNodeVisit() if not foundGoal[0] else None
+        if not foundGoal[0]:
+            handleNextNodeVisit()
+        else:
+            print(visitedNodeList)
+            print("goal minus one is ", goal - 2)
+
+            # visitedNodeList[goal - 2] = [goal, currentNode[0]]
 
     print(visitedNodeList)
     foundPath = [goal]
     makingPath = True
-    nodeInserting = visitedNodeList[-1][0]
-    foundPath.insert(0, visitedNodeList[-1][0])
+    nodeInserting = currentNode[0] #at this state nodeInserting = final node before goal 
+    #add final node before goal node to the found path list
+    foundPath.insert(0, nodeInserting)
 
     while makingPath:
         if(foundPath[0] != start):
@@ -125,4 +127,4 @@ def pathFinder(start, goal, map_nodes):
     print(foundPath)
     print("algorithm ended")
 
-pathFinder(1,9, map_nodes)
+pathFinder(19,2, map_nodes)

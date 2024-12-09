@@ -52,21 +52,33 @@ def neighboursCostCal(curNode):
                 
 
     #all the neighbours of the current node has been put to the sorted nodes list
-    print(unvisitedSortedNodesList)
 
 
-# neighboursCostCal(map_nodes[0])
+
+# neighboursCostCal(map_nodes[1])
 
 #visit next node visit
 def handleNextNodeVisit():
+    minNode = unvisitedSortedNodesList[0] #looks like [nodeNum, cost, prevNode]
+
     #update visited nodes list
-    if(len(visitedNodeList) > unvisitedSortedNodesList[0][0]):
-        visitedNodeList[[unvisitedSortedNodesList[0][0] - 1, ]]
+    if(len(visitedNodeList) > minNode[0]):
+        visitedNodeList[minNode[0] - 1] = [minNode[0], minNode[2]]
+    else:
+        while len(visitedNodeList) < minNode[0]-1:
+            visitedNodeList.append(None)
+
+        visitedNodeList.append([minNode[0], minNode[2]])
 
     #set current node to the minimum node of the sorted node list
-    currentNode = unvisitedSortedNodesList[0][0] 
+    currentNode = minNode[0] 
 
     #remove current node from the sorted node list
     unvisitedSortedNodesList.pop(0)
+
+
+
+
+
 
 

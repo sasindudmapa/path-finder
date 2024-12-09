@@ -3,9 +3,9 @@ import math
 from map import map_nodes
 
 visitedNodeList = []
-sortedNodesList = []
+unvisitedSortedNodesList = [[None, float("inf")]]
 calculatedNodesList = []
-goalCords = [10, 58] #test 
+goalCords = map_nodes[4][1] #test 
 startX, startY = 3, 23 #test
 gradient = 5
 intercept = 8
@@ -35,11 +35,22 @@ def costOfNode(calNodeNum, goalCords, disToCalNode, gradient, intercept):
 def neighboursCostCal(curNode):
     curNodeNeighbours = curNode[2] #looks like [ [neigh number, cost to neigh], [..], ... ] 
     for neighbour in curNodeNeighbours:
-        #checking if the neighbour has been already calculated
+        #check if the neighbour has been already calculated
         if(map_nodes[neighbour[0]-1][-1] == False):
             #has'nt been calculated
             
             #calculate the cost for the current neighbour
             cost = costOfNode(neighbour[0], goalCords, neighbour[1], gradient, intercept)
-            for sortedNode in sortedNodesList:
+            
+            for index, sortedNode in enumerate(unvisitedSortedNodesList):
+                if(cost <= sortedNode[1]):
+                    #put the current neighbour in the sorted nodes list
+                    unvisitedSortedNodesList.insert(index, [neighbour[0], cost])
+                    break
                 
+
+    #all the neighbours of the current node has been put to the sorted nodes list
+    print(unvisitedSortedNodesList)
+
+
+# neighboursCostCal(map_nodes[0])

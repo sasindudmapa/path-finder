@@ -3,7 +3,7 @@ import math
 from map import map_nodes
 
 visitedNodeList = []
-unvisitedSortedNodesList = [[None, float("inf")]]
+unvisitedSortedNodesList = [[None, float("inf"), None]] #none->node number, float->cost, none->prev node
 calculatedNodesList = []
 goalCords = map_nodes[4][1] #test 
 startX, startY = 3, 23 #test
@@ -47,7 +47,7 @@ def neighboursCostCal(curNode):
             for index, sortedNode in enumerate(unvisitedSortedNodesList):
                 if(cost <= sortedNode[1]):
                     #put the current neighbour in the sorted nodes list
-                    unvisitedSortedNodesList.insert(index, [neighbour[0], cost])
+                    unvisitedSortedNodesList.insert(index, [neighbour[0], cost, currentNode])
                     break
                 
 
@@ -58,5 +58,15 @@ def neighboursCostCal(curNode):
 # neighboursCostCal(map_nodes[0])
 
 #visit next node visit
-# def handleNextNodeVisit():
-    
+def handleNextNodeVisit():
+    #update visited nodes list
+    if(len(visitedNodeList) > unvisitedSortedNodesList[0][0]):
+        visitedNodeList[[unvisitedSortedNodesList[0][0] - 1, ]]
+
+    #set current node to the minimum node of the sorted node list
+    currentNode = unvisitedSortedNodesList[0][0] 
+
+    #remove current node from the sorted node list
+    unvisitedSortedNodesList.pop(0)
+
+

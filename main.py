@@ -9,6 +9,8 @@ goalCords = map_nodes[4][1] #test
 startX, startY = 3, 23 #test
 gradient = 5
 intercept = 8
+currentNode = 1
+
 
 #node structure = [
 #                   nodeNum, 
@@ -36,7 +38,7 @@ def neighboursCostCal(curNode):
     curNodeNeighbours = curNode[2] #looks like [ [neigh number, cost to neigh], [..], ... ] 
     for neighbour in curNodeNeighbours:
         #check if the neighbour has been already calculated
-        if(map_nodes[neighbour[0]-1][-1] == False):
+        if(map_nodes[neighbour[0]-1][-1] == False and len(map_nodes[neighbour[0]-1][2]) > 1):
             #has'nt been calculated
             
             #calculate the cost for the current neighbour
@@ -54,3 +56,7 @@ def neighboursCostCal(curNode):
 
 
 # neighboursCostCal(map_nodes[0])
+
+#visit next node visit
+# def handleNextNodeVisit():
+    
